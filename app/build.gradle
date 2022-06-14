@@ -17,10 +17,10 @@ apply plugin: 'AndResGuard'
  *  limitations under the License.
  */
 
-// 加载 keystore.properties 文件
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+//// 加载 keystore.properties 文件
+//def keystorePropertiesFile = rootProject.file("keystore.properties")
+//def keystoreProperties = new Properties()
+//keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -53,10 +53,14 @@ android {
             keyPassword "123456"
         }
         release {
-            storeFile file(keystoreProperties['RELEASE_STORE_FILE'])
-            storePassword keystoreProperties['RELEASE_KEYSTORE_PASSWORD']
-            keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
-            keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
+//            storeFile file(keystoreProperties['RELEASE_STORE_FILE'])
+//            storePassword keystoreProperties['RELEASE_KEYSTORE_PASSWORD']
+//            keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
+//            keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
+            storeFile file("key/debug_key")
+            storePassword "123456"
+            keyAlias "key"
+            keyPassword "123456"
         }
     }
     buildTypes {
